@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Internship {
+  id                         Int      @id @default(autoincrement())
+  title                      String
+  company                    String
+  location                   String?
+  date                       String?
+  job_url                    String?
+  job_description            String?  @db.Text
+  applied                    Boolean  @default(false)
+  hidden                     Boolean  @default(false)
+  interview                  Boolean  @default(false)
+  rejected                   Boolean  @default(false)
+  date_loaded                DateTime @default(now())
+  programme_name             String?
+  opening_date               String?
+  closing_date               String?
+  last_year_opening          String?
+  cv                         String?
+  cover_letter_requirement   Boolean  @default(false)
+  written_answers_requirement Boolean  @default(false)
+  notes                      String?  @db.Text
+  status                     String?
+  job_type                   String?
+  cover_letter               String?  @db.Text
+  resume                     String?
+}
+
